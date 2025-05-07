@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <title>Do'i Digital Printing</title>
+  <style>
+    :root {
+      --primary: white;
+      --bg1: #800000;
+      --bg2: black;
+    }
+
+    * {
+      font-family: 'Poppins', 'Times New Roman', Times, serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+    }
+
+    body {
+      background-color: var(--primary);
+      color: var(--bg1);
+      overflow-y: auto;
+      height: 125vh;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.6rem 7%;
+      background-color: var(--primary);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+    }
+
+    .navbar-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--bg2);
+      font-style: italic;
+      margin-left: 60px;
+    }
+
+    .navbar img {
+      max-width: 70px;
+      border-radius: 35%;
+      position: absolute;
+      left: 70px;
+    }
+
+    .navbar-nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .navbar-nav a {
+      color: var(--bg2);
+      font-size: 1.2rem;
+    }
+
+    .navbar-nav a:hover {
+      color: var(--bg1);
+    }
+
+    /* Tombol hamburger */
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--bg2);
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        right: 30px;
+      }
+
+      .navbar-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 30px;
+        background-color: white;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+
+      .navbar-nav.active {
+        display: flex;
+      }
+    }
+
+    .container {
+      display: flex;
+      margin-top: 100px;
+    }
+
+    .katalog {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      padding: 20px;
+      flex: 2;
+    }
+
+    .produk {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .produk:hover {
+      transform: scale(1.03);
+    }
+
+    .produk img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      border-radius: 8px;
+      
+    }
+
+    .rating {
+      color: gold;
+    }
+
+    .detail-produk {
+      flex: 1;
+      padding: 20px;
+      border-left: 2px solid #ddd;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .detail-produk img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .detail-produk h3, h4 {
+      margin-top: 10px;
+      color: black;
+    }
+
+    .detail-produk p {
+      line-height: 30px;
+      color: var(--bg2);
+      margin-top: 10px;
+    }
+
+    .keranjang {
+      margin-top: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      color: green;
+    }
+
+    .keranjang:hover {
+      color: darkgreen;
+    }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #111;
+  color: white;
+  padding: 20px 10px;
+  z-index: 999;
+  font-size: 16px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-content span {
+  margin: 0 10px;
+  white-space: nowrap;
+}
+
+.footer-content a {
+  color: white;
+  text-decoration: none;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <img src="img/logo.jpeg" alt="Logo" />
+    <a href="#" class="navbar-logo">Do'i Digital Printing</a>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <div class="navbar-nav" id="navbar-nav">
+      <a href="home.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="katalog.html">Katalog</a>
+      <a href="layanan.html">Pemesanan</a>
+      <a href="pengembang.html">Pengembang</a>
+    </div>
+  </nav>
+
+
+  <!-- Product -->
+  <div class="container">
+    <div class="katalog">
+      <!-- Produk 1 -->
+      <div class="produk" onclick="tampilkanDetail('img/cardname.jpeg','Card Name','Memberikan kesan profesional sejak awal, kartu nama kami dicetak dengan kualitas tinggi menggunakan kertas art carton yang kokoh dan halus. Cocok untuk membangun identitas pribadi atau bisnis Anda dengan tampilan yang elegan dan mudah dikenali.',
+  ['1 Box (50 Pcs) : Rp 50.000'])">
+        <img src="img/cardname.jpeg" alt="Card Name" style="object-position: center 29%;">
+        <h4>Card Name</h4>
+        <div class="rating">★★★★★</div>
+        <p>Rp 1.000 </p> <br>
+      </div>
+
+      <!-- Produk 2 -->
+      <div class="produk" onclick="tampilkanDetail('img/bannerfiks.jpeg','Banner','Cocok untuk kebutuhan promosi indoor maupun outdoor, banner kami dicetak pada bahan flexi yang tahan cuaca dan awet. Desainnya tajam dan menarik perhatian, ideal untuk acara, promosi toko, atau branding usaha Anda.',
+  ['Permeter : Rp 20.000'])">
+        <img src="img/bannerfiks.jpeg" alt="Banner">
+        <h4>Banner</h4>
+        <div class="rating">★★★★★</div>
+        <p>Rp 20.000</p>
+      </div>
+
+      <!-- Produk 3 -->
+      <div class="produk" onclick="tampilkanDetail('img/undanganfiks.jpeg','Undangan','Sederhana namun tetap berkesan, undangan kami dicetak menggunakan kertas HVS berkualitas yang ringan dan mudah dibagikan. Cocok untuk berbagai acara seperti hajatan, syukuran, ulang tahun, dan acara keluarga lainnya. Desain bisa disesuaikan agar tetap menarik tanpa harus menguras biaya.',
+  ['1 Pcs : Rp 2.000'])">
+        <img src="img/undanganfiks.jpeg" alt="Undangan" style="object-position: center 38%;">
+        <h4>Undangan</h4>
+        <div class="rating">★★★★★</div>
+        <p>Rp 2.000</p>
+      </div>
+
+      <!-- Produk 4 -->
+      <div class="produk" onclick="tampilkanDetail('img/notafiks.jpeg','Nota','Praktis dan efisien untuk pencatatan transaksi harian. Dicetak menggunakan kertas NCR (No Carbon Required) yang dapat menggandakan tulisan tanpa karbon, sangat membantu untuk keperluan toko, usaha kecil, maupun perusahaan.',
+  ['1 Rem > 20 Pcs > 1 Pcs 50 lembar : Rp 200.000'])">
+        <img src="img/notafiks.jpeg" alt="Nota">
+        <h4>Nota</h4>
+        <div class="rating">★★★★★</div>
+        <p>Rp 200.000</p>
+      </div>
+
+      <!-- Produk 5 -->
+      <div class="produk" onclick="tampilkanDetail('img/stempelfiks.jpeg','Stample','Menghasilkan cetakan yang rapi dan tahan lama, stempel kami tersedia dalam berbagai jenis seperti stempel flash atau kayu. Cocok untuk kebutuhan kantor, bisnis, hingga penggunaan pribadi.',
+  ['Stempel Kayu : Rp 45.000', 'Stampel Flash : Rp 70.000'])">
+        <img src="img/stempelfiks.jpeg" alt="Stempel" style="object-position: center 44%;">
+        <h4>Stempel</h4>
+        <div class="rating">★★★★★</div>
+        <p>Rp 45.000 - 70.000</p>
+      </div>
+
+      <!-- Produk 6 -->
+      <div class="produk" onclick="tampilkanDetail('img/yasin tahlil.jpeg', 'Buku Yasin', 'Kami melayani cetak Buku Yasin custom dengan desain eksklusif dan rapi, cocok untuk acara tahlilan, haul, atau peringatan 40 hari. Tersedia berbagai pilihan cover seperti hard cover, soft cover, dan laminasi doff/glossy. Bisa dicetak nama almarhum/almarhumah, foto, serta doa-doa tambahan sesuai permintaan.',
+  ['1 Pcs : Rp 10.000'])">
+        <img src="img/yasin tahlil.jpeg" alt="yasin" style="object-position: center 38%;">
+        <h4>Buku Yasin</h4>
+        <div class="rating">★★★★☆</div>
+        <p>Rp 10.000</p>
+      </div>
+    </div>
+
+    <div class="detail-produk" id="detailProduk">
+      <img id="detailGambar" src="" alt="Detail Produk">
+      <h3 id="detailNama">Nama Produk</h3>
+      <p id="detailDeskripsi">Deskripsi produk akan tampil di sini.</p>
+      <h4 class="font-bold text-lg">Harga:</h4>
+      <ul id="daftarHarga" class="list-disc list-inside text-gray-700"></ul>
+      <a href="layanan.html" class="keranjang">🛒</a>
+    </div>
+  </div>
+
+  <script>
+function tampilkanDetail(gambar, nama, deskripsi, hargaList) {
+  document.getElementById('detailGambar').src = gambar;
+  document.getElementById('detailNama').textContent = nama;
+  document.getElementById('detailDeskripsi').textContent = deskripsi;
+
+  // Bersihkan harga sebelumnya
+  const daftarHarga = document.getElementById('daftarHarga');
+  daftarHarga.innerHTML = "";
+
+  // Tambahkan semua harga ke daftar
+  hargaList.forEach(harga => {
+    const li = document.createElement('li');
+    li.textContent = harga;
+    daftarHarga.appendChild(li);
+  });
+
+  document.getElementById('detailProduk').style.display = 'flex';
+}
+  </script>
+
+<footer class="footer">
+  <div class="footer-content">
+    <a href="https://www.google.com/maps/place/DOI+DIGITAL+PRINTING/@-8.0310442,112.2141542,17z/data=!3m1!4b1!4m6!3m5!1s0x2e78ed2520e0ccf9:0x93dd7371e30cf49d!8m2!3d-8.0310495!4d112.2167291!16s%2Fg%2F11p9hf5jwp?authuser=0&entry=ttu&g_ep=EgoyMDI0MTExNy4wIKXMDSoASAFQAw%3D%3D" target="_blank">📍Jl. Penataran RT.3 RW.1 Nglegok Blitar</a>
+    <a href="https://wa.me/082331025022" target="_blank">📞0823-3102-5022</a>
+    <a href="mailto:doidigitalprinting11@gmail.com" target="_blank">✉️doidigitalprinting11@gmail.com</a>
+  </div>
+</footer>
+
+  <!-- Script agar menu toggle bekerja -->
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('navbar-nav');
+
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

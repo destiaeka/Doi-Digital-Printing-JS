@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Do'i Digital Printing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+
+  <style>
+    :root {
+      --primary: white;
+      --bg1: #800000;
+      --bg2: black;
+    }
+
+    * {
+      font-family: 'Poppins', 'Times New Roman', Times, serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+    }
+
+    body {
+      background-color: var(--primary);
+      color: var(--bg1);
+      height: 150vh;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.6rem 7%;
+      background-color: var(--primary);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+    }
+
+    .navbar-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--bg2);
+      font-style: italic;
+      margin-left: 60px;
+    }
+
+    .navbar img {
+      max-width: 70px;
+      border-radius: 35%;
+      position: absolute;
+      left: 70px;
+    }
+
+    .navbar-nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .navbar-nav a {
+      color: var(--bg2);
+      font-size: 1.2rem;
+    }
+
+    .navbar-nav a:hover {
+      color: var(--bg1);
+    }
+
+    .team-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+      margin-top: 95px;
+    }
+    .card {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    .card h3 {
+      margin: 10px 0 5px;
+      color: #333;
+    }
+    .card a {
+      text-decoration: none;
+      color: #fff;
+      background-color: var(--bg1);
+      padding: 8px 16px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+    .card a:hover {
+      background-color: var(--bg1);
+    }
+
+    .feedback-form {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .feedback-form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .feedback-form input,
+    .feedback-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+
+    .feedback-form button {
+      background-color: var(--bg1);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .feedback-form button:hover {
+      background-color: var(--bg1);
+    }
+
+    /* Tombol hamburger */
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--bg2);
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        right: 30px;
+      }
+
+      .navbar-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 30px;
+        background-color: white;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+
+      .navbar-nav.active {
+        display: flex;
+      }
+    }
+
+    .footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #111;
+  color: white;
+  padding: 20px 10px;
+  z-index: 999;
+  font-size: 16px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-content span {
+  margin: 0 10px;
+  white-space: nowrap;
+}
+
+.footer-content a {
+  color: white;
+  text-decoration: none;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <img src="img/logo.jpeg" alt="Logo" />
+    <a href="#" class="navbar-logo">Do'i Digital Printing</a>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <div class="navbar-nav" id="navbar-nav">
+      <a href="home.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="katalog.html">Katalog</a>
+      <a href="layanan.html">Pemesanan</a>
+      <a href="pengembang.html">Pengembang</a>
+    </div>
+  </nav>
+
+  <div class="team-container">
+    <div class="card">
+      <img src="img/dika2.jpeg" alt="Foto Anggota 1">
+      <h3>Andika Dwi Kurniawan</h3>
+      <a href="https://github.com/ANDIKAKUR/Portofolio./home.html" target="_blank">Lihat Portofolio</a>
+    </div>
+    <div class="card">
+      <img src="img/destia1.jpeg" alt="Foto Anggota 2">
+      <h3>Destia Eka Rahmawati</h3>
+      <a href="https://destiaeka.github.io/portofolio-pweb/home.html" target="_blank">Lihat Portofolio</a>
+    </div>
+    <div class="card">
+      <img src="img/fariz.png" alt="Foto Anggota 3">
+      <h3>Farizky Rahmad Nur Wahid</h3>
+      <a href="https://link-portofolio3.com" target="_blank">Lihat Portofolio</a>
+    </div>
+    <div class="card">
+      <img src="img/fasa.jpeg" alt="Foto Anggota 4">
+      <h3>Fasa Ayu Fitria Ningsih</h3>
+      <a href="https://link-portofolio4.com" target="_blank">Lihat Portofolio</a>
+    </div>
+    <div class="card">
+      <img src="img/alfa.jpeg" alt="Foto Anggota 5">
+      <h3>Fauzian Alfa Zahri</h3>
+      <a href="https://link-portofolio5.com" target="_blank">Lihat Portofolio</a>
+    </div>
+    <div class="card">
+      <img src="img/gea1.jpeg" alt="Foto Anggota 6">
+      <h3>Gea Viki Adinda Purti</h3>
+      <a href="https://link-portofolio6.com" target="_blank">Lihat Portofolio</a>
+    </div>
+  </div>
+
+  <div class="feedback-form">
+    <label for="message">Pesan atau Saran:</label>
+    <textarea id="message" name="message" rows="5" placeholder="Tulis pesan atau saran Anda..." required></textarea>
+  
+    <button type="submit" onclick="clearMessage()">Kirim</button>
+  </div>
+  
+  <script>
+    // Fungsi untuk mengosongkan textarea setelah kirim
+    function clearMessage() {
+      // Ambil elemen textarea berdasarkan ID
+      var messageBox = document.getElementById('message');
+      
+      // Kosongkan isi dari textarea
+      messageBox.value = '';
+    }
+  </script>
+  
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <a href="https://www.google.com/maps/place/DOI+DIGITAL+PRINTING/@-8.0310442,112.2141542,17z/data=!3m1!4b1!4m6!3m5!1s0x2e78ed2520e0ccf9:0x93dd7371e30cf49d!8m2!3d-8.0310495!4d112.2167291!16s%2Fg%2F11p9hf5jwp?authuser=0&entry=ttu&g_ep=EgoyMDI0MTExNy4wIKXMDSoASAFQAw%3D%3D" target="_blank">📍Jl. Penataran RT.3 RW.1 Nglegok Blitar</a>
+      <a href="https://wa.me/082331025022" target="_blank">📞0823-3102-5022</a>
+      <a href="mailto:doidigitalprinting11@gmail.com" target="_blank">✉️doidigitalprinting11@gmail.com</a>
+    </div>
+  </footer>
+
+  <!-- Script agar menu toggle bekerja -->
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('navbar-nav');
+
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
